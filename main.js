@@ -22,17 +22,30 @@ function getCellElements (currentRowElement) {
 
 // YOUR CODE GOES HERE
 
+replaceAllButton.addEventListener("click", function() {
+    let findInputClick = findInput.value
+    console.log(findInputClick)
 
-// One last thing: dedicate very careful attention to using variables and
-// naming them accurately.
-// And when you change the value you are assigning to a variable, don't
-// forget to consider changing the name to reflect the change you made! It
-// is very easy to get confused when you are working inside NESTED LOOPS.
-// The best of us do. And unnecessary confusion during the process of 
-// developing your code means wasted time.
-//
-// The time-cost of structuring and naming things well is FAR less than the
-// time-cost of ignoring the quality and readability of your code.
-//
-// You can, of course, remove any comments in this starter project once
-// you have read them, if you prefer.
+    let replaceInputClick = replaceInput.value
+    console.log(replaceInputClick)
+
+    let rowNumber = 1
+    for (let row = 0; row < rowElements.length; row += 1) {
+        console.log("row number " + rowNumber)
+        rowNumber += 1
+
+        let cellNumber = 1
+        let cellID = getCellElements(rowElements[row])
+        
+        for (let cell = 0; cell < cellID.length; cell += 1) {
+            console.log("cell number " + cellNumber)
+            console.log(cellID[cell].innerText)
+            cellNumber += 1
+            let cellText = (cellID[cell])
+            if (cellText.innerText.includes(findInput.value)) {
+                console.log("true")
+                cellText.innerHTML.replace(findInput.value, replaceInput.value)
+            }
+        }
+    }
+})
